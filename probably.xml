@@ -42,6 +42,7 @@
   <Script file="system\core\dsl.lua" />
   <Script file="system\core\library.lua" />
   <Script file="system\core\raid.lua" />
+  <Script file="system\core\lexer.lua" />
 
   <!-- Conditions -->
   <Script file="system\conditions\core.lua" />
