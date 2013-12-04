@@ -232,10 +232,10 @@ ProbablyEngine.dsl.eval = function (condition, target, spell)
   end
 end
 
-ProbablyEngine.dsl.register = function (condition, evaluation)
-  ProbablyEngine.dsl[condition] = evaluation
+ProbablyEngine.dsl.register = function (name, dsl)
+  ProbablyEngine.dsl[name] = dsl
 end
 
-ProbablyEngine.dsl.unregister = function (condition)
-  ProbablyEngine.dsl[condition] = nil
+ProbablyEngine.dsl.unregister = function (name)
+  ProbablyEngine.dsl[name] = nil
 end
