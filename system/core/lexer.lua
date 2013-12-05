@@ -1,10 +1,6 @@
 -- ProbablyEngine Rotations - https://probablyengine.com/
 -- Released under modified BSD, see attached LICENSE.
 
-local function alterGroup(string)
-  return string:sub(2, -2)
-end
-
 local actions = {
   { 'stopCasting', '^!' },
   { 'item', '^#' },
@@ -18,7 +14,8 @@ local rules = {
   { 'identifier', '^[_%a][_%w]*' },
   { 'number', { '^[%+%-]?%d+%.?%d*', '^%d+%.?%d*' } },
   { 'args', { '^%([%w:!\',"%(%) ]*%)' } },
-  { 'group', { '^%(.*%)' }, alterGroup },
+  { 'openParen', '^%(' },
+  { 'closeParen', '^%)' },
 
   { 'index', { '^%[[%w:!\'," ]*%]' } },
   { 'math', { '^%*', '^/', '^%-', '^%+' } },
@@ -32,7 +29,7 @@ local tokenTables = {
   rule = rules
 }
 
-local function parse(string, tokens, ignore, limit)
+local function parse(string, tokens, ignore)
   if not tokens then error('Missing the Token Table') end
   if type(tokens) == 'string' then
     if not tokenTables[tokens] then error('Unknown Token Table') end
@@ -50,7 +47,7 @@ local function parse(string, tokens, ignore, limit)
     local found = false
 
     for i = 1, #tokens do
-      local token, patterns, nested = tokens[i][1], tokens[i][2], tokens[i][3]
+      local token, patterns = tokens[i][1], tokens[i][2]
 
       local patternType = type(patterns)
       local loops = 1
@@ -73,11 +70,7 @@ local function parse(string, tokens, ignore, limit)
 
           if ignore[token] then break end
 
-          if nested and limit and limit > 0 then
-            table.insert(list, { token, parse(nested(sub), tokens, ignore, limit - 1) })
-          else
-            table.insert(list, { token, sub })
-          end
+          table.insert(list, { token, sub })
           
           break
         end
