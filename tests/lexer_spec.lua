@@ -207,26 +207,26 @@ spec('Lexer', function ()
         })
       end)
 
-      it('parses nested groups', function ()
-        local groups = {
+      it('parses parentheses', function ()
+        local parentheses = {
           { '(5 + ( ( 1 + 2 ) * 3 ) ) / 1000', {
-            { 'group', {
+            { 'openParen', '(' },
               { 'number', '5' }, { 'math', '+' },
-              { 'group', {
-                { 'group', {
-                  { 'number', '1' }, { 'math', '+' }, { 'number', '2' }
-                }},
-                { 'math', '*' }, { 'number', '3' }
-              }}
-            }},
-            { 'math', '/' }, { 'number', '1000' }
+                { 'openParen', '(' },
+                  { 'openParen', '(' },
+                    { 'number', '1' }, { 'math', '+' }, { 'number', '2' },
+                  { 'closeParen', ')' },
+                { 'math', '*' }, { 'number', '3' },
+              { 'closeParen', ')' },
+            { 'closeParen', ')' },
+            { 'math', '/' }, { 'number', '1000' },
           }
         }}
 
-        for i = 1, #groups do
-          local parsed, err = parse(groups[i][1], 'rule', nil, 10)
+        for i = 1, #parentheses do
+          local parsed, err = parse(parentheses[i][1], 'rule', nil, 10)
           assert_nil(err)
-          assert_same(parsed, groups[i][2])
+          assert_same(parsed, parentheses[i][2])
         end
       end)
 
