@@ -12,7 +12,7 @@ local actions = {
   { 'spell', { '^[%w:!\',"%- ]*' } },
 }
 
-local conditionals = {
+local rules = {
   { 'space', '^%s+' },
   { 'library', '^@' },
   { 'identifier', '^[_%a][_%w]*' },
@@ -29,7 +29,7 @@ local conditionals = {
 
 local tokenTables = {
   action = actions,
-  conditional = conditionals
+  rule = rules
 }
 
 local function parse(string, tokens, ignore, limit)

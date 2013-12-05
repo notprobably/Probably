@@ -57,15 +57,15 @@ spec('Lexer', function ()
       end)
     end)
 
-    context('Conditionals', function ()
+    context('Rules', function ()
       it('ignore spaces', function ()
-        local parsed, err = parse('    \n     \n    ', 'conditional')
+        local parsed, err = parse('    \n     \n    ', 'rule')
         assert_nil(err)
         assert_same(parsed, {})
       end)
 
       it('parses the library prefix', function ()
-        local parsed, err = parse('@coreHealing', 'conditional')
+        local parsed, err = parse('@coreHealing', 'rule')
         assert_nil(err)
         assert_same(parsed, {
           { 'library', '@' },
@@ -86,7 +86,7 @@ spec('Lexer', function ()
         }
 
         for i = 1, #identifiers do
-          local parsed, err = parse(identifiers[i], 'conditional')
+          local parsed, err = parse(identifiers[i], 'rule')
           assert_nil(err)
           assert_same(parsed, {
             { 'identifier', identifiers[i] }
@@ -105,7 +105,7 @@ spec('Lexer', function ()
         }
 
         for i = 1, #numbers do
-          local parsed, err = parse(numbers[i], 'conditional')
+          local parsed, err = parse(numbers[i], 'rule')
           assert_nil(err)
           assert_same(parsed, {
             { 'number', numbers[i] }
@@ -129,7 +129,7 @@ spec('Lexer', function ()
         }
 
         for i = 1, #arguments do
-          local parsed, err = parse(arguments[i], 'conditional')
+          local parsed, err = parse(arguments[i], 'rule')
           assert_nil(err)
           assert_same(parsed, {
             { 'args', arguments[i] }
@@ -146,7 +146,7 @@ spec('Lexer', function ()
         }
 
         for i = 1, #indexes do
-          local parsed, err = parse(indexes[i], 'conditional')
+          local parsed, err = parse(indexes[i], 'rule')
           assert_nil(err)
           assert_same(parsed, {
             { 'index', indexes[i] }
@@ -155,7 +155,7 @@ spec('Lexer', function ()
       end)
 
       it('parses not', function ()
-        local parsed, err = parse('!!', 'conditional')
+        local parsed, err = parse('!!', 'rule')
         assert_nil(err)
         assert_same(parsed, {
           { 'not', '!' },
@@ -172,7 +172,7 @@ spec('Lexer', function ()
         }
 
         for i = 1, #math do
-          local parsed, err = parse(math[i], 'conditional')
+          local parsed, err = parse(math[i], 'rule')
           assert_nil(err)
           assert_same(parsed, {
             { 'math', math[i] }
@@ -189,7 +189,7 @@ spec('Lexer', function ()
         }
 
         for i = 1, #comparators do
-          local parsed, err = parse(comparators[i], 'conditional')
+          local parsed, err = parse(comparators[i], 'rule')
           assert_nil(err)
           assert_same(parsed, {
             { 'comparator', comparators[i] }
@@ -198,7 +198,7 @@ spec('Lexer', function ()
       end)
 
       it('parses periods', function ()
-        local parsed, err = parse('...', 'conditional')
+        local parsed, err = parse('...', 'rule')
         assert_nil(err)
         assert_same(parsed, {
           { 'period', '.' },
@@ -224,7 +224,7 @@ spec('Lexer', function ()
         }}
 
         for i = 1, #groups do
-          local parsed, err = parse(groups[i][1], 'conditional', nil, 10)
+          local parsed, err = parse(groups[i][1], 'rule', nil, 10)
           assert_nil(err)
           assert_same(parsed, groups[i][2])
         end
@@ -253,7 +253,7 @@ spec('Lexer', function ()
         }
 
         for i = 1, #expected do
-          local parsed, err = parse(expected[i][1], 'conditional')
+          local parsed, err = parse(expected[i][1], 'rule')
           assert_nil(err)
           assert_same(parsed, expected[i][2])
         end
