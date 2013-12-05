@@ -33,6 +33,7 @@ local tokenTables = {
 }
 
 local function parse(string, tokens, ignore, limit)
+  if not tokens then error('Missing the Token Table') end
   if type(tokens) == 'string' then
     if not tokenTables[tokens] then error('Unknown Token Table') end
     tokens = tokenTables[tokens]
