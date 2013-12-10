@@ -7,7 +7,6 @@ ProbablyEngine.rotation = {
   rotations = { },
   oocrotations =  { },
   custom = { },
-  ooccustom = { },
   cdesc = { },
   buttons = { },
   specId = { },
@@ -134,10 +133,6 @@ ProbablyEngine.rotation.register_custom = function(specId, _desc, _spellTable, a
   end
   if type(arg2) == "function" then
     _buttons = arg2
-  end
-
-  if _oocrotation then
-    ProbablyEngine.rotation.ooccustom[specId] = _oocrotation
   end
 
   if not ProbablyEngine.rotation.custom[specId] then
