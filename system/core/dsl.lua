@@ -2,7 +2,7 @@
 -- Released under modified BSD, see attached LICENSE.
 
 ProbablyEngine.dsl = {
-
+  dsl = {}
 }
 
 local comparator_table = { }
@@ -233,9 +233,9 @@ ProbablyEngine.dsl.eval = function (condition, target, spell)
 end
 
 ProbablyEngine.dsl.register = function (name, dsl)
-  ProbablyEngine.dsl[name] = dsl
+  ProbablyEngine.dsl.dsl[name] = dsl
 end
 
 ProbablyEngine.dsl.unregister = function (name)
-  ProbablyEngine.dsl[name] = nil
+  ProbablyEngine.dsl.dsl[name] = nil
 end
