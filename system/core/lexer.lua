@@ -12,7 +12,7 @@ local rules = {
   { 'space', '^%s+' },
   { 'library', '^@' },
   { 'identifier', '^[_%a][_%w]*' },
-  { 'number', { '^[%+%-]?%d+%.?%d*', '^%d+%.?%d*' } },
+  { 'number', { '^%d+%.?%d*', '^%d+%.?%d*' } },
   { 'args', { '^%([%w:!\',"%(%) ]*%)' } },
   { 'openParen', '^%(' },
   { 'closeParen', '^%)' },
