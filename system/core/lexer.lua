@@ -13,6 +13,7 @@ local rules = {
   { 'library', '^@' },
   { 'identifier', '^[_%a][_%w]*' },
   { 'constant', { '^true', '^false', '^nil' } },
+  { 'string', { '^"[^"]+"', '^\'[^\']+\'' } },
   { 'number', { '^%d+%.?%d*', '^%d+%.?%d*' } },
   { 'args', { '^%([%w:!\',"%(%) ]*%)' } },
   { 'openParen', '^%(' },
