@@ -15,7 +15,6 @@ local rules = {
   { 'constant', { '^true', '^false', '^nil' } },
   { 'string', { '^"[^"]+"', '^\'[^\']+\'' } },
   { 'number', { '^%d+%.?%d*', '^%d+%.?%d*' } },
-  { 'args', { '^%([%w:!\',"%(%) ]*%)' } },
   { 'openParen', '^%(' },
   { 'closeParen', '^%)' },
 
@@ -23,7 +22,8 @@ local rules = {
   { 'math', { '^%*', '^/', '^%-', '^%+' } },
   { 'comparator', { '^>=', '^>', '^<=', '^<', '^==', '^=', '^!=', '~=' } },
   { 'not', '^!' },
-  { 'period', '^%.' }
+  { 'period', '^%.' },
+  { 'comma', '^%,' }
 }
 
 local tokenTables = {
