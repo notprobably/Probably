@@ -11,9 +11,9 @@ local actions = {
 local rules = {
   { 'space', '^%s+' },
   { 'library', '^@' },
-  { 'identifier', '^[_%a][_%w]*' },
   { 'constant', { '^true', '^false', '^nil' } },
   { 'string', { '^"[^"]+"', '^\'[^\']+\'' } },
+  { 'identifier', '^[_%a][_%w:!\'%- ]*' },
   { 'number', { '^%d+%.?%d*', '^%d+%.?%d*' } },
   { 'openParen', '^%(' },
   { 'closeParen', '^%)' },
