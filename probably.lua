@@ -2,8 +2,8 @@
 -- Released under modified BSD, see attached LICENSE.
 
 ProbablyEngine = {
-  addonName = "Probably",
-  addonColor = "2277dd"
+  addonName = 'Probably',
+  addonColor = '2277dd'
 }
 
 function ProbablyEngine.print(message)
