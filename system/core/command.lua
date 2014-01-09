@@ -1,52 +1,71 @@
 -- ProbablyEngine Rotations - https://probablyengine.com/
 -- Released under modified BSD, see attached LICENSE.
 
-ProbablyEngine.command = {
-  commands = 0,
-  handlers = { }
-}
+ProbablyEngine.command = {}
+local command = ProbablyEngine.command
+local pPrint = ProbablyEngine.print
 
-ProbablyEngine.command.print = function(message)
-  print("|cFF"..ProbablyEngine.addonColor.."["..ProbablyEngine.addonName.."]|r " .. message .. "")
+local handlers = {}
+
+local function printHelp(name)
+  if name == 'pe' then
+    pPrint('|cff' .. ProbablyEngine.addonColor .. 'ProbablyEngine ' .. pelg('build') .. '|r ' .. ProbablyEngine.version)
+  end
+    
+  for cmd, help in pairs(handlers[name]._help) do
+    pPrint('|cff' .. ProbablyEngine.addonColor .. '/' .. name .. ' ' .. cmd .. '|r ' .. help)
+  end
 end
-
-ProbablyEngine.command.register = function (command, handler)
-  local name = 'PE_' .. command
-  _G["SLASH_" .. name .. "1"] = '/' .. command
-  SlashCmdList[name] = function(message, editbox) handler(message, editbox) end
-end
-
-ProbablyEngine.command.register_handler = function(command, handler)
-  local command_type = type(command)
-  if command_type == "string" then
-    ProbablyEngine.command.handlers[command] = handler
-  elseif command_type == "table" then
-    for _,com in pairs(command) do
-      ProbablyEngine.command.handlers[com] = handler
+  
+function command.register_handler(name, cmd, help, handler)
+  if not handlers[name] then
+    if type(name) == 'table' then
+      for k, v in pairs(name) do
+        pPrint(k)
+        pPrint(v)
+      end
     end
+    return pPrint('Error, registering command for non existant handler: ' .. name) -- #PELG
+  end
+
+  local commandType = type(cmd)
+  if commandType == 'string' then
+    handlers[name][cmd] = handler
+    handlers[name]._help[cmd] = help
+  elseif commandType == 'table' then
+    for i = 1, #cmd do
+      handlers[name][cmd[i]] = handler
+    end
+    handlers[name]._help[cmd[1]] = help
   else
-    ProbablyEngine.command.print(pelg('unknown_type') .. ': ' .. command_type)
+    pPrint(pelg('unknown_type') .. ': ' .. commandType)
   end
 end
 
-ProbablyEngine.command.register('pe', function(msg, box)
-  local command, text = msg:match("^(%S*)%s*(.-)$")
-  if ProbablyEngine.command.handlers[command] then
-    ProbablyEngine.command.handlers[command](text)
+local function defaultHandler(name, message)
+  local cmd, text = message:match('^(%S*)%s*(.*)$')
+  if handlers[name][cmd] then
+    handlers[name][cmd](text)
   else
-    ProbablyEngine.command.handlers['help']('help')
+    printHelp(name)
   end
-end)
+end
 
-ProbablyEngine.command.register_handler({'init', 'initmacro', 'initmacros'}, function()
-  DeleteMacro("PE_Cycle");
-  DeleteMacro("PE_Toggle");
-  DeleteMacro("PE_Cooldowns");
-  DeleteMacro("PE_Interrupts");
-  DeleteMacro("PE_AoE");
-  CreateMacro("PE_Cycle", "achievement_Goblinhead", "/pe cycle");
-  CreateMacro("PE_Toggle", "achievement_Goblinhead", "/pe toggle");
-  CreateMacro("PE_Cooldowns", "Achievement_BG_winAB_underXminutes", "/pe cooldowns");
-  CreateMacro("PE_Interrupts", "Ability_Kick", "/pe interrupts");
-  CreateMacro("PE_AoE", "Ability_Druid_Starfall", "/pe aoe");
-end)
+function command.register(cmd, handler)
+  local name = 'PE_' .. cmd
+  _G['SLASH_' .. name .. '1'] = '/' .. cmd
+
+  if handler then
+    SlashCmdList[name] = handler
+    return
+  end
+
+  handlers[cmd] = { _help = {} }
+  SlashCmdList[name] = function (message, editbox)
+    defaultHandler(cmd, message)
+  end
+
+  command.register_handler(cmd, { 'help', '?', 'wat' }, pelg('help_help'), function ()
+    printHelp(cmd)
+  end)
+end
