@@ -32,6 +32,7 @@
   <Script file="system\core\module.lua" />
   <Script file="system\core\listener.lua" />
   <Script file="system\core\buttons.lua" />
+  <Script file="system\core\emitter.lua" />
   <Script file="system\core\command.lua" />
   <Script file="system\core\timer.lua" />
   <Script file="system\core\timeout.lua" />

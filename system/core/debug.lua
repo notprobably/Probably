@@ -24,6 +24,7 @@ end
 addFlag('no_flag')
 addFlag('config')
 addFlag('listener')
+addFlag('event')
 addFlag('timer')
 addFlag('library')
 addFlag('dsl_no_exist')
