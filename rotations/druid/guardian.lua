@@ -32,7 +32,7 @@ ProbablyEngine.rotation.register(104, {
   { "Nature's Vigil", { "player.spell(Berserk).cooldown = 0" }},
   { "Nature's Vigil", { "player.spell(Incarnation: Son of Ursoc).cooldown = 0" }},
   { "Incarnation: Son of Ursoc", { "player.buff(Nature's Vigil)" }},
-  { "Berserk", { "player.time > 5", "!player.buff(Incarnation: Son of Ursoc)", "player.spell(Nature's Vigil).duration > 10" }},
+  { "Berserk", { "player.time > 5", "!player.buff(Incarnation: Son of Ursoc)", "player.buff(Nature's Vigil).duration > 10" }},
   },  { "target.range <= 5", "player.spell(Nature's Vigil).exists", "modifier.cooldowns" }},
   {{
   { "Incarnation: Son of Ursoc" },
