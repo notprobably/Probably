@@ -12,7 +12,7 @@ local function onEvent(self, event, ...)
   if not listeners[event] then return end
 
   for i = 1, #listeners[event] do
-    debug.print('Event Called: ' .. event .. ', ' .. listeners[event][i].name, 'listener')
+    debug.print('Listener Called: ' .. event .. ', ' .. listeners[event][i].name, 'listener')
     listeners[event][i].callback(...)
   end
 end
@@ -25,7 +25,7 @@ function listener.register(name, event, callback)
     name, event, callback = 'default', name, event
   end
 
-  debug.print('Event Registered: ' .. event .. ', ' .. name, 'listener')
+  debug.print('Listener Registered: ' .. event .. ', ' .. name, 'listener')
 
   if not listeners[event] then
     frame:RegisterEvent(event)
@@ -42,7 +42,7 @@ function listener.unregister(event, name, callback)
 
   for i = 1, #listeners[event] do
     if listeners[event][i].name == name or listeners[event][i].callback == callback then
-      debug.print('Event Unregistered: ' .. event .. ', ' .. name, 'listener')
+      debug.print('Listener Unregistered: ' .. event .. ', ' .. name, 'listener')
       table.remove(listeners[event], i)
     end
   end
