@@ -44,6 +44,7 @@ end
 function GetSpellBookIndex(spell)
   local spellName = GetSpellName(spell)
   if not spellName then return false end
+
   spellName = stringLower(spellName)
 
   for t = 1, 2 do
@@ -51,21 +52,22 @@ function GetSpellBookIndex(spell)
     local i
     for i = 1, (offset + numSpells) do
       if stringLower(GetSpellBookItemName(i, BOOKTYPE_SPELL)) == spellName then
-        return i, BOOKTYPE_SPELL
-      end
-    end
-  end
-
-  local numFlyouts = GetNumFlyouts()
-  for f = 1, numFlyouts do
-    local flyoutID = GetFlyoutID(f)
-    local _, _, numSlots, isKnown = GetFlyoutInfo(flyoutID)
-    if isKnown and numSlots > 0 then
-      for g = 1, numSlots do
-        local spellID, _, isKnownSpell = GetFlyoutSlotInfo(flyoutID, g)
-        local name = GetSpellName(spellID)
-        if name and isKnownSpell and stringLower(GetSpellName(spellID)) == spellName then
-          return spellID, nil
+        local skillType, spellID = GetSpellBookItemInfo(i, BOOKTYPE_SPELL)
+        if skillType == 'FUTURESPELL' then
+          return false
+        elseif skillType == 'FLYOUT' then
+          local _, _, numSlots, isKnown = GetFlyoutInfo(spellID)
+          if isKnown and numSlots > 0 then
+            for g = 1, numSlots do
+              local spellID, _, isKnownSpell = GetFlyoutSlotInfo(spellID, g)
+              local name = GetSpellName(spellID)
+              if name and isKnownSpell and stringLower(GetSpellName(spellID)) == spellName then
+                return spellID, nil
+              end
+            end
+          end
+        else
+          return i, BOOKTYPE_SPELL, spellID
         end
       end
     end
@@ -75,7 +77,12 @@ function GetSpellBookIndex(spell)
   if numPetSpells then
     for i = 1, numPetSpells do
       if stringLower(GetSpellBookItemName(i, BOOKTYPE_PET)) == spellName then
-        return i, BOOKTYPE_PET
+        local skillType, spellID = GetSpellBookItemInfo(i, BOOKTYPE_PET)
+        if skillType == 'FUTURESPELL' then
+          return false
+        else
+          return i, BOOKTYPE_PET, spellID
+        end
       end
     end
   end
