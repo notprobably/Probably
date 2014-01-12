@@ -12,6 +12,7 @@ local rules = {
   { 'space', '^%s+' },
   { 'library', '^@' },
   { 'constant', { '^true', '^false', '^nil' } },
+  { 'logic', { '^and', '^or' } },
   { 'string', { '^"[^"]+"', '^\'[^\']+\'' } },
   { 'identifier', '^[_%a][_%w:!\'%- ]*' },
   { 'number', { '^%d+%.?%d*', '^%d+%.?%d*' } },
