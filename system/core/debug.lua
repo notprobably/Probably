@@ -52,10 +52,13 @@ function debug.print(message, flag)
   if not debug.enabled then return end
   if flag == nil then flag = 'no_flag' end
   if bit.band(getFlag(flag), level) ~= 0 then
-    print("|cFFff8000[Debug]|r " .. message)
+    print('|cFFff8000[Debug]|r ' .. message)
   end
 end
 
 function debug.dump(obj)
+  if not DevTools_Dump then
+    LoadAddOn('Blizzard_DebugTools')
+  end
   return DevTools_Dump(obj)
 end
