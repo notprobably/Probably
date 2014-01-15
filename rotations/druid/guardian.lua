@@ -5,63 +5,63 @@ ProbablyEngine.rotation.register(104, {
   -- Start Rotation --
   --------------------
 
-  --Feck you need bear form
-  { "Bear Form", { "!player.buff(Bear Form)" }},
+  -- Bear Form
+  { "5487", { "!player.buff(5487)" }}, --Bear Form
 
   -- Interrupts
-  { "Faerie Fire", "modifier.interrupts", "!modifier.last(Mighty Bash)" },
-  { "Mighty Bash" , "modifier.interrupts", "!modifier.last(Skull Bash)" },
+  { "80964", "modifier.interrupts", "!modifier.last(5211)" }, --Skull Bash --Mighty Bash
+  { "5211" , "modifier.interrupts", "!modifier.last(80964)" }, --Mighty Bash --Skull Bash
 
   -- Ress target-Instantly
-  { "Rebirth", { "target.dead", "player.buff(Dream of Cenarius)" }, "target" },
-  { "Rebirth", { "mouseover.dead", "player.buff(Dream of Cenarius)" }, "mouseover" },
+  { "20484", { "target.dead", "player.buff(108373)" }, "target" }, --Rebirth --Dream of Cenarius
+  { "20484", { "mouseover.dead", "player.buff(108373)" }, "mouseover" }, --Rebirth --Dream of Cenarius
   
   -- Survival
   {{
-  { "Renewal", { "player.health <= 30" }},
-  { "Renewal", { "player.health <= 50", "player.buff(Might of Ursoc)" }},
-  { "Survival Instincts", { "player.health <= 40" }},
-  { "Might of Ursoc", { "player.health <= 50" }},
-  { "Barkskin", { "player.health <= 90" }},
-  { "Bone Shield", { "player.buff(Symbiosis)" }},
-  { "Elusive Brew", { "player.health <= 90", "player.buff(Symbiosis)" }},
-  { "#Healthstone", { "player.health <= 50" }},
+  { "108238", { "player.health <= 30" }}, --Renewal
+  { "108238", { "player.health <= 50", "player.buff(106922)" }}, --Renewal --Might of Ursoc
+  { "61336", { "player.health <= 40" }}, --Survival Instincts
+  { "106922", { "player.health <= 50" }}, --Might of Ursoc
+  { "22812", { "player.health <= 90" }}, --Barkskin
+  { "122285", }, --Bone Shield
+  { "126453", { "player.health <= 90" }}, --Elusive Brew
+  { "#5512", { "player.health <= 50" }}, --Healthstone
   }, { "toggle.Survival" }},
-  { "Frenzied Regeneration", { "player.health <= 80", "!player.buff", "!modifier.last(Frenzied Regeneration)" }},
-  { "Savage Defense", { "player.health <= 95", "!player.buff", "!modifier.last(Savage Defense)" }},
-  { "Healing Touch", { "player.health <= 90", "player.buff(Dream of Cenarius)" }}, --self
-  { "Healing Touch", { "targettarget.health <= 90", "player.buff(Dream of Cenarius)" }, "targettarget" }, --self or other tank
-  { "Healing Touch", { "lowest.health <= 65", "player.buff(Dream of Cenarius)" }, "lowest" }, --anyone in raid
+  { "22842", { "player.health <= 80", "!player.buff", "!modifier.last(22842)" }}, --Frenzied Regeneration
+  { "62606", { "player.health <= 95", "!player.buff", "!modifier.last(62606)" }}, --Savage Defense
+  { "5185", { "player.health <= 90", "player.buff(108373)" }}, --Healing Touch --Dream of Cenarius
+  { "5185", { "targettarget.health <= 90", "player.buff(108373)" }, "targettarget" }, --Healing Touch --Dream of Cenarius
+  { "5185", { "lowest.health <= 65", "player.buff(108373)" }, "lowest" }, --Healing Touch --Dream of Cenarius
   
-  --AOE
-  { "Swipe", { "modifier.multitarget", "target.range <= 5" }}, 
+  -- AOE
+  { "779", { "modifier.multitarget", "target.range <= 5" }}, --Swipe
 
   -- Cooldowns
   {{
-  { "Nature's Vigil", { "player.spell(Berserk).cooldown = 0" }},
-  { "Nature's Vigil", { "player.spell(Incarnation: Son of Ursoc).cooldown = 0" }},
-  { "Incarnation: Son of Ursoc", { "player.buff(Nature's Vigil)" }},
-  { "Berserk", { "player.time > 5", "!player.buff(Incarnation: Son of Ursoc)", "player.buff(Nature's Vigil).duration > 10" }},
-  }, { "!target.dead", "target.range <= 5", "player.spell(Nature's Vigil).exists", "modifier.cooldowns" }},
+  { "124974", { "player.spell(50334).cooldown = 0" }}, --Nature's Vigil --Berserk
+  { "124974", { "player.spell(102558).cooldown = 0" }}, --Nature's Vigil --Incarnation: Son of Ursoc
+  { "102558", { "player.buff(124974)" }}, --Incarnation: Son of Ursoc --Nature's Vigil
+  { "50334", { "player.time > 10", "!player.buff(102558)", "player.buff(124974).duration > 10" }}, --Berserk --Incarnation: Son of Ursoc --Nature's Vigil
+  }, { "!target.dead", "target.range <= 5", "player.spell(124974).exists", "modifier.cooldowns" }}, --Nature's Vigil
   {{
-  { "Incarnation: Son of Ursoc" },
-  { "Berserk", { "player.time >= 90", "!player.buff(Incarnation: Son of Ursoc)" }},
-  }, { "!target.dead", "target.range <= 5", "!player.spell(Nature's Vigil).exists", "modifier.cooldowns" }},
+  { "102558" }, --Incarnation: Son of Ursoc
+  { "50334", { "player.time >= 90", "!player.buff(102558)" }}, --Berserk --Incarnation: Son of Ursoc
+  }, { "!target.dead", "target.range <= 5", "!player.spell(124974).exists", "modifier.cooldowns" }}, --Nature's Vigil
 
   -- Mob Control
-  { "Enrage", { "player.rage < 70" }},
-  { "Faerie Fire", { "target.debuff(Weakened Armor).duration < 3" }},
-  { "Thrash", { "target.range <= 5", "target.debuff.duration < 3" }},
-  { "Maul", { "player.buff(Tooth and Claw)", "!modifier.last(Maul)" }},
-  { "Maul", { "player.rage >= 70", "!modifier.last(Maul)"  }},
-  { "Maul", { "player.treat < 100", "!modifier.last(Maul)"  }},
-  { "Mangle" },
-  { "Lacerate", { "target.debuff.duration < 3", "!modifier.multitarget" }},
-  { "Lacerate", { "!modifier.last(Lacerate)" }},
-  { "Swipe", { "target.range <= 5", "modifier.enemies > 3" }},
-  { "Faerie Fire" },
-  { "Thrash", { "target.range <= 5" }},
-  { "Swipe", { "target.range <= 5" }},
+  { "5229", { "player.rage < 70" }}, --Enrage
+  { "770", { "target.debuff(113746).duration < 3" }},  --Faerie Fire
+  { "77758", { "target.range <= 5", "target.debuff.duration < 3" }}, --Thrash
+  { "6807", { "player.buff(135288)", "!modifier.last(6807)" }}, --Maul --Tooth and Claw
+  { "6807", { "player.rage >= 80", "!modifier.last(6807)" }}, --Maul
+  { "6807", { "player.threat < 100", "!modifier.last(6807)" }}, --Maul
+  { "33917" },
+  { "33745", { "target.debuff.duration < 3", "!modifier.multitarget" }}, --Lacerate
+  { "33745", { "!modifier.last(33745)", "!modifier.multitarget" }}, --Lacerate
+  { "779", { "target.range <= 5", "modifier.enemies > 3" }}, --Swipe
+  { "77758", { "target.range <= 5" }}, --Thrash
+  { "779", { "target.range <= 5" }}, --Swipe
+  { "770" }, --Faerie Fire
 
   ------------------
   -- End Rotation --
@@ -74,8 +74,8 @@ ProbablyEngine.rotation.register(104, {
   -- OOC Begin --
   ---------------
 
-{ "Mark of the Wild", { "!lowest.buff(Mark of the Wild).any", "!lowest.buff(Blessing of Kings).any", "!lowest.buff(Legacy of the Emperor).any", "lowest.range <= 30", "player.form = 0" }, "lowest" }
-
+{ "1126", { "!lowest.buff(1126).any", "!lowest.buff(20217).any", "!lowest.buff(115921).any", "lowest.range <= 30", "player.form = 0" }, "lowest" }
+-- Mark of the Wild --Blessing of Kings --Legacy of the Emperor
   -------------
   -- OOC End --
   -------------
