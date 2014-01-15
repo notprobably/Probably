@@ -9,8 +9,8 @@ ProbablyEngine.rotation.register(104, {
   { "5487", { "!player.buff(5487)" }}, --Bear Form
 
   -- Interrupts
-  { "80964", "modifier.interrupts", "!modifier.last(5211)" }, --Skull Bash --Mighty Bash
-  { "5211" , "modifier.interrupts", "!modifier.last(80964)" }, --Mighty Bash --Skull Bash
+  { "80964", { "modifier.interrupt", "!modifier.last(5211)" }}, --Skull Bash --Mighty Bash
+  { "5211" , { "modifier.interrupt", "!modifier.last(80964)" }}, --Mighty Bash --Skull Bash
 
   -- Ress target-Instantly
   { "20484", { "target.dead", "player.buff(108373)" }, "target" }, --Rebirth --Dream of Cenarius
@@ -29,11 +29,11 @@ ProbablyEngine.rotation.register(104, {
   }, { "toggle.Survival" }},
   { "22842", { "player.health <= 80", "!player.buff", "!modifier.last(22842)" }}, --Frenzied Regeneration
   { "62606", { "player.health <= 95", "!player.buff", "!modifier.last(62606)" }}, --Savage Defense
-  { "5185", { "player.health <= 90", "player.buff(108373)" }}, --Healing Touch --Dream of Cenarius
-  { "5185", { "targettarget.health <= 90", "player.buff(108373)" }, "targettarget" }, --Healing Touch --Dream of Cenarius
-  { "5185", { "lowest.health <= 65", "player.buff(108373)" }, "lowest" }, --Healing Touch --Dream of Cenarius
+  { "5185", { "player.health <= 90", "player.buff(145162)" }}, --Healing Touch --Dream of Cenarius
+  { "5185", { "targettarget.health <= 90", "player.buff(145162)" }, "targettarget" }, --Healing Touch --Dream of Cenarius
+  { "5185", { "lowest.health <= 65", "player.buff(145162)" }, "lowest" }, --Healing Touch --Dream of Cenarius
   
-  -- AOE
+  --AOE
   { "779", { "modifier.multitarget", "target.range <= 5" }}, --Swipe
 
   -- Cooldowns
