@@ -527,7 +527,7 @@ ProbablyEngine.condition.register("mushrooms", function ()
 end)
 
 local function checkChanneling(target)
-  local name, _, _, _, startTime, endTime, _, _, notInterruptible = UnitCastingInfo(target) 
+  local name_, _, _, _, startTime, endTime, _, notInterruptible = UnitChannelInfo(target)
   if name then return name, startTime, endTime, notInterruptible end
 
   return false
@@ -537,7 +537,7 @@ local function checkCasting(target)
   local name, startTime, endTime, notInterruptible = checkChanneling(target)
   if name then return name, startTime, endTime, notInterruptible end
 
-  local name_, _, _, _, startTime, endTime, _, notInterruptible = UnitChannelInfo(target)
+  local name, _, _, _, startTime, endTime, _, _, notInterruptible = UnitCastingInfo(target) 
   if name then return name, startTime, endTime, notInterruptible end
 
   return false
