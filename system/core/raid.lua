@@ -90,7 +90,7 @@ local function updateHealth(index)
   end
 
   ProbablyEngine.raid.roster[index].health = health / maxHealth * 100
-  ProbablyEngine.raid.roster[index].healthMissing = maxHealth - health
+  ProbablyEngine.raid.roster[index].healthMissing = max(0, maxHealth - health)
   ProbablyEngine.raid.roster[index].maxHealth = maxHealth
 end
 
