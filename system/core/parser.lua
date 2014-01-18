@@ -60,7 +60,9 @@ ProbablyEngine.parser.can_cast =  function(spell, unit, stopCasting)
   end
 
   if spell == nil then return false end
-  if unit == nil then unit = "target" end
+  if unit == nil then
+    unit = UnitExists("target") and "target" or "player"
+  end
   if unit == "ground" then unit = nil end
   local spellIndex, spellBook = GetSpellBookIndex(spell)
   if not spellIndex then
@@ -253,8 +255,12 @@ ProbablyEngine.parser.table = function(spellTable, fallBackTarget)
       end
     end
 
+    if ProbablyEngine.dsl.parsedTarget ~= nil then
+      target = ProbablyEngine.dsl.parsedTarget
+    end
+
     if target == nil then
-      target = ProbablyEngine.dsl.parsedTarget or "target"
+      target = "target"
     end
 
     if eventType == "item" then
