@@ -108,3 +108,12 @@ function table.length(tbl)
   end
   return count
 end
+
+function table.contains(tbl, n)
+  for _, v in pairs(haystack) do
+    if v == n then
+      return true
+    end
+  end
+  return false
+end
