@@ -64,7 +64,14 @@ ProbablyEngine.cycle = function(skip_verify)
           ProbablyEngine.actionLog.insert('Ground Cast', name, icon)
         end
       else
+        if spellID == 110309 then
+          RunMacroText("/target " .. target)
+          target = "target"
+        end
         CastSpellByName(name, target or "target")
+        if spellID == 110309 then
+          RunMacroText("/targetlasttarget")
+        end
         if icon then
           ProbablyEngine.actionLog.insert('Spell Cast', name, icon)
         end
@@ -123,7 +130,14 @@ ProbablyEngine.timer.register("oocrotation", function()
           ProbablyEngine.actionLog.insert('Ground Cast', name, icon)
         end
       else
+        if spellID == 110309 then
+          RunMacroText("/target " .. target)
+          target = "target"
+        end
         CastSpellByName(name, target)
+        if spellID == 110309 then
+          RunMacroText("/targetlasttarget")
+        end
         if icon then
           ProbablyEngine.actionLog.insert('Spell Cast', name, icon)
         end
