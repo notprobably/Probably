@@ -19,10 +19,19 @@ ProbablyEngine.rotation.register(103, {
   { "Cat Form", "!player.buff(Cat Form)" },
 
   --Cooldowns
-  { "106737", { "player.spell(106737).charges > 2", "!modifier.last(106737)", "player.spell(106737).exists" } }, --Force of Nature
+  { "106737", { 
+    "player.spell(106737).charges > 2", 
+    "!modifier.last(106737)", 
+    "player.spell(106737).exists" 
+  }}, --Force of Nature
+  
   { "Beserk", "modifier.cooldowns" },
   { "Nature's Vigil", "modifier.cooldowns" },
-  { "Incarnation", "modifier.cooldowns", "player.buff(Beserk)" },
+  
+  { "Incarnation", { 
+    "modifier.cooldowns", 
+    "player.buff(Beserk)",
+  }},
 
   --Keybinds
   { "Ursol's Vortex", "modifier.shift", "ground" },
@@ -32,26 +41,58 @@ ProbablyEngine.rotation.register(103, {
   { "Mass Entanglement", "modifier.shift" },
 
   --Interrupts
-  { "Skull Bash", { "target.casting", "modifier.interrupt" }},
+  { "Skull Bash", { 
+    "target.casting", 
+    "modifier.interrupt" 
+  }},
+  
   { "Disorienting Roar", "modifier.interrupt" },
   { "Mighty Bash", "modifier.interrupt" },
 
   -- Self Heals
-  { "Healing Touch", {"player.buff(Predatory Swiftness)", "player.health <= 70"} },
-  { "Regrowth", {"player.buff(Predatory Swiftness)", "player.health <= 90"} },
+  { "Healing Touch", {
+    "player.buff(Predatory Swiftness)", 
+    "player.health <= 70",
+  }},
+  
+  { "Regrowth", {
+    "player.buff(Predatory Swiftness)", 
+    "player.health <= 90",
+  }},
 
   -- AoE
   { "Swipe", "modifier.multitarget" },
-  { "106830", {"modifier.multitarget", "target.debuff(Thrash).duration <= 1.5"} },
+  
+  { "106830", {
+    "modifier.multitarget", 
+    "target.debuff(Thrash).duration <= 1.5"
+  }},
 
   -- Debuffs
   { "Faerie Fire", "!target.debuff(Weakened Armor)" },
-  { "Faerie Swarm", { "!target.debuff(Weakened Armor)", "player.spell(106707).exists" } },
+  
+  { "Faerie Swarm", { 
+    "!target.debuff(Weakened Armor)", 
+    "player.spell(106707).exists",
+  }},
 
   -- Buffs
-  { "Savage Roar", { "!player.buff(Savage Roar)", "player.combopoints = 0", "!player.combat", "target.enemy" } },
-  { "Savage Roar", { "player.buff(Savage Roar).duration < 5", "player.combopoints = 5" } },
-  { "Savage Roar", { "player.buff(Savage Roar).duration < 3", "player.combopoints >= 2" } },
+  { "Savage Roar", { 
+    "!player.buff(Savage Roar)", 
+    "player.combopoints = 0", 
+    "!player.combat", 
+    "target.enemy",
+  }},
+  
+  { "Savage Roar", { 
+    "player.buff(Savage Roar).duration < 5", 
+    "player.combopoints = 5",
+  }},
+  
+  { "Savage Roar", { 
+    "player.buff(Savage Roar).duration < 3", 
+    "player.combopoints >= 2",
+  }},
 
   -- Free Thrash
   { "Thrash", "player.buff(Omen of Clarity)" },
@@ -64,18 +105,35 @@ ProbablyEngine.rotation.register(103, {
   { "Rake", "target.debuff(Rake).duration <= 4" },
 
   -- Rip
-  { "Rip", { "!target.debuff(Rip)", "player.combopoints = 5" } },
-  { "Rip", { "target.health > 25", "target.debuff(Rip).duration < 5", "player.combopoints = 5" } },
+  { "Rip", { 
+    "!target.debuff(Rip)", 
+    "player.combopoints = 5",
+  }},
+  
+  { "Rip", { 
+    "target.health > 25", 
+    "target.debuff(Rip).duration < 5", 
+    "player.combopoints = 5",
+  }},
 
   -- Ferocious Bite
   -- Target Health is less then 25%
-  { "Ferocious Bite", { "target.debuff(Rip)", "target.health < 30", "player.combopoints = 5" } },
+  { "Ferocious Bite", { 
+    "target.debuff(Rip)", 
+    "target.health < 30", 
+    "player.combopoints = 5",
+  }},
 
   -- Max Combo and Rip or Savage do not need refreshed
-  { "Ferocious Bite", { "player.combopoints = 5", "target.debuff(Rip).duration > 5", "player.buff(Savage Roar).duration > 5" } },
+  { "Ferocious Bite", { 
+    "player.combopoints = 5", 
+    "target.debuff(Rip).duration > 5", 
+    "player.buff(Savage Roar).duration > 5",
+  }},
 
   -- Combo Point Building Rotation
   -- Shred
+  
   {{
   { "Shred", "player.buff(Clearcasting)" },
   { "Shred", "player.buff(Berserk)" },
@@ -83,6 +141,7 @@ ProbablyEngine.rotation.register(103, {
   }, "player.behind" },
 
   -- Mangle
+  
   {{
   { "Mangle", "player.buff(Clearcasting)" },
   { "Mangle", "player.buff(Berserk)" },
@@ -99,13 +158,33 @@ ProbablyEngine.rotation.register(103, {
   -- OOC Begin --
   ---------------
   
-  { "Savage Roar", { "!player.buff(Savage Roar)", "target.range < 10", "player.buff(Prowl)", "target.exists", "target.enemy" } },
-  { "Mangle", { "target.range < 10", "!player.behind", "player.buff(Prowl)", "target.exists", "target.enemy" }, "target" },
-  { "Ravage", { "target.range < 10", "player.behind", "player.buff(Prowl)", "target.exists" }, "target" },
-  { "Prowl", { "player.buff(Cat Form)", "target.enemy" } },
-  { "Cat Form", { "player.buff(Mark of the Wild)", "!player.buff(Cat Form)" } },
-  { "/cancelaura Cat Form", { "player.buff(Cat Form)", "!player.buff(Mark of the Wild)" } },
-  { "Mark of the Wild", { "!player.buff(Mark of the Wild)", "!player.buff(Cat Form)" } },
+  { "Mark of the Wild", { 
+    "!player.buff(Mark of the Wild)", 
+    "!player.buff(Cat Form)",
+  }},
+  
+  { "Savage Roar", { 
+    "!player.buff(Savage Roar)", 
+    "target.range < 10", 
+    "player.buff(Prowl)", 
+    "target.exists", 
+    "target.enemy",
+  }},
+  
+  { "Prowl", { 
+    "player.buff(Cat Form)", 
+    "target.enemy",
+  }},
+  
+  { "Cat Form", { 
+    "player.buff(Mark of the Wild).any", 
+    "!player.buff(Cat Form)",
+  }},
+  
+  { "/cancelaura Cat Form", { 
+    "player.buff(Cat Form)", 
+    "!player.buff(Mark of the Wild)",
+  }},
 
   -------------
   -- OOC End --

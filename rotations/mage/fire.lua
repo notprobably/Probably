@@ -6,12 +6,22 @@ ProbablyEngine.rotation.register(63, {
   --------------------
   
   -- Cooldowns
-  { "45438", {"modifier.cooldowns", "player.health <= 30"} }, -- Ice Block
-  { "11958", {"modifier.cooldowns", "player.health <= 25", "player.spell(45438).cooldown"} }, -- Cold Snap
+  { "45438", {
+    "modifier.cooldowns", 
+    "player.health <= 30" } }, -- Ice Block
+  { "11958", {
+    "modifier.cooldowns", 
+    "player.health <= 25", 
+    "player.spell(45438).cooldown",
+  }},-- Cold Snap
+  
   { "55342", "modifier.cooldowns" }, -- Mirror Image
   { "108978", "modifier.cooldowns" }, -- Alter Time
   { "12043", "modifier.cooldowns" }, -- Presence of Mind
-  { "115610", { "modifier.cooldowns", "player.health <= 80"} }, -- Temporal Shield
+  { "115610", { 
+    "modifier.cooldowns", 
+    "player.health <= 80",
+  }},-- Temporal Shield
   
     -- Interrupts
   { "2139", "modifier.interrupts" }, -- Counterspell
@@ -31,7 +41,7 @@ ProbablyEngine.rotation.register(63, {
   -- Survivability
   { "122", "target.range <= 9" }, -- Frost Nova
   { "1953", "target.range <= 3" }, -- Blink
-  { "31661", "target.range <= 5"}, -- Dragon's Breath
+  { "31661", "target.range <= 5" }, -- Dragon's Breath
   { "116011", "modifier.shift", "ground" }, -- Rune of Power
   { "11426", "player.health <= 80" }, -- Ice Barrier
   
@@ -53,7 +63,7 @@ ProbablyEngine.rotation.register(63, {
   -- OOC Begin --
   ---------------
   
-  { "1459", "!player.buff" }, -- Arcane Brilliance
+  { "1459", "!player.buff(1459).any" }, -- Arcane Brilliance
   { "30482", "!player.buff(30482)" }
   
   -------------

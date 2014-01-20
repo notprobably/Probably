@@ -23,22 +23,61 @@ ProbablyEngine.rotation.register(102, {
   { "Innervate", "player.mana <= 75", "player" },
   
   -- Cooldowns
-  { "Incarnation: Chosen of Elune", "modifier.cooldowns", "player.balance.sun" },
+  { "Incarnation: Chosen of Elune", { 
+    "modifier.cooldowns", 
+    "player.balance.sun",
+  }},
+  
   { "Nature's Vigil", "modifier.cooldowns" },
   
   -- AoE and Keybinds
-  { "Moonfire", "modifier.multitarget", "target.debuff(Moonfire).duration < 2" },
-  { "Sunfire", "modifier.multitarget", "target.debuff(Sunfire).duration < 2" },
+  { "Moonfire", { 
+    "modifier.multitarget", 
+    "target.debuff(Moonfire).duration < 2",
+  }},
+  
+  { "Sunfire", {
+    "modifier.multitarget", 
+    "target.debuff(Sunfire).duration < 2",
+  }},
+  
   { "Starfall", "modifier.multitarget" },
-  { "Wild Mushroom", "modifer.multitarget", "modifier.control" },
-  { "Wild Mushroom: Detonate", "modifer.multitarget", "modifier.alt" },
-  { "Hurricane", "modifier.multitarget", "modifier.shift" },
-  { "Astral Storm", "modifier.multitarget", "modifier.shift" },
+  
+  { "Wild Mushroom", { 
+    "modifer.multitarget", 
+    "modifier.control",
+  }},
+  
+  { "Wild Mushroom: Detonate", { 
+    "modifer.multitarget", 
+    "modifier.alt",
+  }},
+  
+  { "Hurricane", { 
+    "modifier.multitarget", 
+    "modifier.shift",
+  }},
+  
+  { "Astral Storm", { 
+    "modifier.multitarget", 
+    "modifier.shift",
+  }},
   
   -- Walking
-  { "Moonfire", { "player.balance.moon", "player.moving" } },
-  { "Sunfire", { "player.balance.sun", "player.moving" } },
-  { "Starsurge", { "player.buff(Shooting Stars)", "player.moving" } },
+  { "Moonfire", { 
+    "player.balance.moon", 
+    "player.moving" 
+  }},
+  
+  { "Sunfire", { 
+    "player.balance.sun", 
+    "player.moving",
+  }},
+  
+  { "Starsurge", { 
+    "player.buff(Shooting Stars)", 
+    "player.moving"
+  }},
   
   -- Dots
   { "Moonfire", "target.debuff(Moonfire).duration < 2" },

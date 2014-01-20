@@ -10,7 +10,7 @@ ProbablyEngine.rotation.register(255, {
   { "!/cast [@pet,dead] Revive Pet; Call Pet 1", "!pet.exists" },
 
   -- Traps
-  { "Snake Trap"    , "modifier.control", "ground" },
+  { "Snake Trap", "modifier.control", "ground" },
   { "Explosive Trap", "modifier.alt", "ground" },
   { "Freezing Trap" , "modifier.shift", "ground" },
 
@@ -20,18 +20,34 @@ ProbablyEngine.rotation.register(255, {
   -- Survival
   { "Deterrence", "player.health < 40" },
   { "Exhilaration", "player.health < 40" },
-  { "Mend Pet", { "pet.health <= 75", "pet.exists", "!pet.buff(Mend Pet)" } },
+  
+  { "Mend Pet", { 
+    "pet.health <= 75", 
+    "pet.exists", 
+    "!pet.buff(Mend Pet)",
+  }},
 
   -- Cooldowns
   { "Stampede", "modifier.cooldowns" },
   { "A Murder of Crows", "modifier.cooldowns" },
   { "Dire Beast", "modifier.cooldowns" },
   { "Rapid Fire", "modifier.cooldowns" },
-  { "Rabid", { "modifier.cooldowns", "player.buff(Rapid Fire)" } },
+  
+  { "Rabid", { 
+    "modifier.cooldowns", 
+    "player.buff(Rapid Fire)",
+  }},
 
   -- AoE
-  { "Multi-Shot", { "player.buff(Thrill of the Hunt)", "modifier.multitarget" } },
-  { "Multi-Shot", { "player.focus >= 60", "modifier.multitarget" } },
+  { "Multi-Shot", { 
+    "player.buff(Thrill of the Hunt)", 
+    "modifier.multitarget",
+  }},
+  
+  { "Multi-Shot", { 
+    "player.focus >= 60", 
+    "modifier.multitarget",
+  }},
 
   -- Rotation
   { "Explosive Shot", "player.buff(Lock and Load)" },

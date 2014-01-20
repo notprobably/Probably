@@ -6,14 +6,31 @@ ProbablyEngine.rotation.register(62, {
   --------------------
   
   -- Cooldowns
-  { "45438", {"modifier.cooldowns", "player.health <= 30"} }, -- Ice Block
-  { "11958", {"modifier.cooldowns", "player.health <= 25", "player.spell(45438).cooldown"} }, -- Cold Snap
+  { "45438", {
+    "modifier.cooldowns", 
+    "player.health <= 30",
+  }}, -- Ice Block
+  
+  { "11958", {
+    "modifier.cooldowns", 
+    "player.health <= 25", 
+    "player.spell(45438).cooldown",
+  }}, -- Cold Snap
+  
   { "55342", "modifier.cooldowns" }, -- Mirror Image
   { "12043", "modifier.cooldowns" }, -- Presence of Mind
-  { "115610", { "modifier.cooldowns", "player.health <= 80"} }, -- Temporal Shield
+  
+  { "115610", { 
+    "modifier.cooldowns", 
+    "player.health <= 80",
+  }}, -- Temporal Shield
   
   -- Alter Time Logic
-  { "108978", { "player.buff(12042)", "!player.buff(108978)", "toggle.alter"} }, -- Alter Time
+  { "108978", { 
+    "player.buff(12042)", 
+    "!player.buff(108978)", 
+    "toggle.alter",
+  }}, -- Alter Time
   
   -- Interrupts
   { "2139", "modifier.interrupts" }, -- Counterspell
@@ -43,14 +60,30 @@ ProbablyEngine.rotation.register(62, {
   -- Moving
   { "44425", "player.moving" }, -- Arcane Barrage
   { "2136", "player.moving" }, -- Fire Blast
-  { "30455", {"player.moving", "player.spell(2136).cooldown", "player.spell(44425).cooldown"} }, -- Ice Lance
+  
+  { "30455", {
+    "player.moving", 
+    "player.spell(2136).cooldown", 
+    "player.spell(44425).cooldown",
+  }},-- Ice Lance
 
   -- Opener
-  { "12042", { "player.buff(79683).count >= 2", "toggle.alter" } }, -- Arcane Power
+  { "12042", { 
+    "player.buff(79683).count >= 2", 
+    "toggle.alter",
+  }},-- Arcane Power
 
   -- Rotation
-  { "5143", { "player.buff(79683).count >= 1", "player.debuff(36032).count >= 4" } }, -- Arcane Missiles
-  { "44425", { "player.debuff(36032).count >= 4", "!player.buff(5143)" } }, -- Arcane Barrage
+  { "5143", { 
+    "player.buff(79683).count >= 1", 
+    "player.debuff(36032).count >= 4",
+  }},-- Arcane Missiles
+  
+  { "44425", { 
+    "player.debuff(36032).count >= 4", 
+    "!player.buff(5143)",
+  }},-- Arcane Barrage
+  
   { "30451" } -- Arcane Blast
   
   ------------------
@@ -64,9 +97,18 @@ ProbablyEngine.rotation.register(62, {
   ---------------
   
   { "1459", "!player.buff" }, -- Arcane Brilliance
-  { "7302", "!player.buff(30482)", "!player.spell(30482).exists" }, -- Frost Armor
-  { "30482", "!player.buff(30482)", "!player.spell(6117).exists" }, -- Molten Armor
-  { "6117", "!player.buff(6117)" } -- Mage Armor
+  
+  { "7302", { 
+    "!player.buff(30482)", 
+    "!player.spell(30482).exists",
+  }},-- Frost Armor
+  
+  { "30482", { 
+    "player.buff(30482)", 
+    "!player.spell(6117).exists",
+  }},-- Molten Armor
+  
+  { "6117", { "!player.buff(6117)" } -- Mage Armor
   
   -------------
   -- OOC End --
