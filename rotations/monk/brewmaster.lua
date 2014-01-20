@@ -22,7 +22,12 @@ ProbablyEngine.rotation.register(268, {
   { "Diffuse Magic", "player.health <= 60" },
   
   -- Multitarget
-  { "Rushing Jade Wind", { "modifier.multitarget", "!player.buff(Rushing Jade Wind)", "!player.buff(Rushing Jade Wind).duration < 2" } },
+  { "Rushing Jade Wind", { 
+    "modifier.multitarget", 
+    "!player.buff(Rushing Jade Wind)", 
+    "!player.buff(Rushing Jade Wind).duration < 2",
+  }},
+  
   { "Spinning Crane Kick", "modifier.multitarget" },
   
   -- Ground Stuff
@@ -53,7 +58,12 @@ ProbablyEngine.rotation.register(268, {
   -- Rotation
   { "Keg Smash" },
   { "Guard", "player.buff(Power Guard)" },
-  { "Breath of Fire", { "target.debuff(Dizzying Haze)", "!target.debuff(Breath of Fire)"} },
+  
+  { "Breath of Fire", { 
+    "target.debuff(Dizzying Haze)", 
+    "!target.debuff(Breath of Fire)",
+  }},
+  
   { "Tiger Palm", "player.buff(Tiger Power).duration < 4" },
   { "Blackout Kick" },
   { "Jab" },

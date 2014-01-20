@@ -8,7 +8,7 @@ ProbablyEngine.rotation.register(258, {
   
   -- Cooldowns
   { "Power Infusion", "modifier.cooldowns" },
-  { "Shadowfiend",    "modifier.cooldowns" },
+  { "Shadowfiend", "modifier.cooldowns" },
     
   -- Keybinds
   { "Mind Sear", "modifier.shift" },
@@ -24,7 +24,7 @@ ProbablyEngine.rotation.register(258, {
   { "Devouring Plague", "player.shadoworbs = 3" },
   { "Mind Blast" }, 
   { "Shadow Word: Death", "target.debuff(Shadow Word: Death).duration < 1" },
-  { "Shadow Word: Pain", "target.debuff(Shadow Word: Pain).duration < 1" },
+  { "Shadow Word: Pain", "target.debuff(Shadow Word: Pain).duration < 3" },
   { "Vampiric Touch", "target.debuff(Vampiric Touch).duration < 1" },
   { "Mind Flay", "target.debuff(Devouring Plague)" }, 
   { "Cascade", },

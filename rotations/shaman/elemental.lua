@@ -10,7 +10,11 @@ ProbablyEngine.rotation.register(262, {
   { "Lightning Shield", "!player.buff(Lightning Shield)" },
 
   -- Moving Rotation
-  { "Lightning Bolt", {  "player.moving", "!player.buff(Spiritwalker's Grace)" } },
+  
+  { "Lightning Bolt", {  
+    "player.moving", 
+    "!player.buff(Spiritwalker's Grace)",
+  }},
 
   -- AoE
   { "Earthquake", "modifier.shift", "ground" },
@@ -19,10 +23,18 @@ ProbablyEngine.rotation.register(262, {
   { "Shamanistic Rage", "modifier.cooldowns" },
   { "Stormlash Totem", "modifier.cooldowns" },
   { "Fire Elemental Totem", "modifier.cooldowns" },
-  { "Ascendance", { "modifier.cooldowns", "!player.buff(Ascendance)" } },
+  
+  { "Ascendance", { 
+    "modifier.cooldowns", 
+    "!player.buff(Ascendance)",
+  }},
 
   -- Totems
-  { "Searing Totem", { "!player.totem(Fire Elemental Totem)", "!player.totem(Searing Totem)" } },
+  { "Searing Totem", { 
+    "!player.totem(Fire Elemental Totem)", 
+    "!player.totem(Searing Totem)",
+  }},
+  
   { "Healing Stream", "!totem(Healing Stream)" },
 
   -- Rotation

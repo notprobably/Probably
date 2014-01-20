@@ -17,8 +17,16 @@ ProbablyEngine.rotation.register(259, {
   { "Vendetta", "modifier.cooldowns" },
 
   -- Rotation
-  { "Slice and Dice", {  "!player.buff(Slice and Dice)", "player.combopoints >= 2" } },
-  { "Rupture", { "target.debuff(Rupture).duration <= 8", "player.combopoints = 5" } },
+  { "Slice and Dice", {  
+    "!player.buff(Slice and Dice)", 
+    "player.combopoints >= 2",
+  }},
+  
+  { "Rupture", { 
+    "target.debuff(Rupture).duration <= 8", 
+    "player.combopoints = 5",
+  }},
+  
   { "Envenom", "player.combopoints = 5" },
   { "Dispatch", "player.buff(Blindside)" },
   { "Fan of Knives", "modifier.multitarget" },

@@ -11,8 +11,11 @@ ProbablyEngine.rotation.register(265, {
   -- Soul Burn + Soul Swap
   {{
   { "Soulburn", "!player.buff(Soulburn)" },
-  { "Soul Swap", "player.buff(Soulburn)" } },
-  { "target.debuff(Agony).duration <= 3", "target.debuff(Corruption).duration <= 3", "target.debuff(Unstable Affliction).duration <= 3" } },
+  { "Soul Swap", "player.buff(Soulburn)" }},
+    { "target.debuff(Agony).duration <= 3", 
+      "target.debuff(Corruption).duration <= 3", 
+      "target.debuff(Unstable Affliction).duration <= 3" 
+    }},
   
   -- Rotation?
   { "Fel Flame", "player.moving" },

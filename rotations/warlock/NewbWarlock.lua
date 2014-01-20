@@ -6,7 +6,10 @@ ProbablyEngine.rotation.register(9, {
   --------------------
 
   -- Mouseover
-  { "Corruption", {"modifier.shift", "!mouseover.debuff(Corruption)"}, "mouseover" },
+  { "Corruption", {
+    "modifier.shift", 
+    "!mouseover.debuff(Corruption)"
+  }, "mouseover" },
   
   -- Survival
   { "Drain Life", "player.health <= 85" },

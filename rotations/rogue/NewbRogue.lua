@@ -12,7 +12,11 @@ ProbablyEngine.rotation.register(4, {
   { "Evasion", "player.health <= 75" },
   
   -- Opener
-  { "Stealth", "target.enemy" },
+  { "Stealth", { 
+    "target.enemy"
+    "!player.buff(Stealth)",
+  }},
+  
   { "Ambush", "player.buff(Stealth)" },
   
   -- Rotation
@@ -23,5 +27,12 @@ ProbablyEngine.rotation.register(4, {
   -- End Rotation --
   ------------------
   
-  }
-)
+  },{
+  -- Opener
+  { "Stealth", { 
+    "target.enemy"
+    "!player.buff(Stealth)",
+  }},
+  
+  { "Ambush", "player.buff(Stealth)" },
+})

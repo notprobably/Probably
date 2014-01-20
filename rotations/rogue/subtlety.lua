@@ -9,13 +9,25 @@ ProbablyEngine.rotation.register(261, {
   { "Kick", "modifier.interrupts" },
   
   -- Buffs
-  { "Deadly Poison", { "!player.buff(Deadly Poison)", "!player.moving" } },
+  { "Deadly Poison", { 
+    "!player.buff(Deadly Poison)", 
+    "!player.moving",
+  }},
+  
   { "Leeching Poison", "!player.buff(Leeching Poison)" },
   
   -- Cooldowns
   { "Shadow Blades", "modifier.cooldowns" },
-  { "Slice and Dice", { "!player.buff(Slice and Dice)", "player.combopoints = 5" } },
-  { "Vanish", { "!player.buff(Shadow Dance)", "modifier.cooldowns" } },
+  
+  { "Slice and Dice", { 
+    "!player.buff(Slice and Dice)", 
+    "player.combopoints = 5",
+  }},
+  
+  { "Vanish", { 
+    "!player.buff(Shadow Dance)", 
+    "modifier.cooldowns",
+  }},
   
   -- Rotation
   { "Eviscerate", "player.combopoints = 5" },
@@ -24,7 +36,11 @@ ProbablyEngine.rotation.register(261, {
   { "Fan of Knives", "modifier.multitarget" },
   { "Backstab", "player.behind" },
   { "Hemorrhage", "!player.behind" },
-  { "Hemorrhage", { "!player.spell(Backstab).exists", "player.behind" } },
+  
+  { "Hemorrhage", { 
+    "!player.spell(Backstab).exists", 
+    "player.behind",
+  }},
   }, "player.combopoints < 5" },
   
   ------------------
@@ -37,8 +53,15 @@ ProbablyEngine.rotation.register(261, {
   -- OOC Begin --
   ---------------
   
-  { "Deadly Poison", { "!player.buff(Deadly Poison)", "!player.moving" } },
-  { "Ambush", { "player.buff(Stealth)", "target.spell(Ambush).range" }, "target" },
+  { "Deadly Poison", { 
+    "!player.buff(Deadly Poison)", 
+    "!player.moving",
+  }},
+  
+  { "Ambush", { 
+    "player.buff(Stealth)", 
+    "target.spell(Ambush).range" 
+  }, "target" },
   
   -------------
   -- OOC End --

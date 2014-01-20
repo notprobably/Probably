@@ -9,10 +9,15 @@ ProbablyEngine.rotation.register(71, {
   { "Berserker Rage" },
 
   -- Survival
-  { "Rallying Cry", { "player.health <= 35" } },
-  { "Shield Wall", { "player.health <= 55" } },
-  { "Die by the Sword", { "player.health <= 65" } },
-  { "Hamstring", { "!target.debuff(Hamstring)", "modifier.player" } },
+  { "Rallying Cry", { "player.health <= 35" }},
+  { "Shield Wall", { "player.health <= 55" }},
+  { "Die by the Sword", { "player.health <= 65" }},
+  
+  { "Hamstring", { 
+    "!target.debuff(Hamstring)", 
+    "modifier.player",
+  }},
+  
   { "Impending Victory", "player.health <= 85" },
   { "Victory Rush", "player.health <= 85" },
 
@@ -39,7 +44,12 @@ ProbablyEngine.rotation.register(71, {
   { "Mortal Strike" },
   { "Colossus Smash" },
   { "Heroic Throw" },
-  { "Heroic Strike", { "player.rage > 70", "target.debuff(Colossus Smash)" } },
+  
+  { "Heroic Strike", { 
+    "player.rage > 70", 
+    "target.debuff(Colossus Smash)",
+  }},
+  
   { "Slam", "player.rage > 40" },
   
   ------------------

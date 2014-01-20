@@ -6,7 +6,10 @@ ProbablyEngine.rotation.register(5, {
   --------------------
   
   -- Mouseover
-  { "Shadow Word: Pain", {"modifier.shift", "!mouseover.debuff(Shadow Word: Pain)"}, "mouseover" },
+  { "Shadow Word: Pain", {
+    "modifier.shift", 
+    "!mouseover.debuff(Shadow Word: Pain)"
+  }, "mouseover" },
   
   -- Survival
   { "Power Word: Shield", "player.health <= 95" },

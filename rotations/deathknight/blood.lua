@@ -85,7 +85,7 @@ ProbablyEngine.rotation.register(250, {
     "target.debuff(Frost Fever).duration < 3", 
     "target.debuff(Blood Plague).duration <3", 
     "target.range <= 10",
-  } },  
+  }},  
 	
   { "Icy Touch", "target.debuff(Frost Fever).duration < 3" },
   { "Plague Strike", "target.debuff(Blood Plague).duration < 3" },
@@ -93,7 +93,8 @@ ProbablyEngine.rotation.register(250, {
   -- AoE Rotation
   { "Pestilence", { 
     "target.debuff(Blood Plague", 
-    "target.debuff(Frost Fever)" } },
+    "target.debuff(Frost Fever)",
+  }},
 	
   { "Death Strike", "modifier.multitarget" },
   

@@ -9,15 +9,31 @@ ProbablyEngine.rotation.register(73, {
   { "Berserker Rage" },
 
   -- Survival
-  { "Rallying Cry", { "player.health < 10", "modifier.cooldowns" } },
-  { "Last Stand", { "player.health < 20", "modifier.cooldowns" } },
-  { "Shield Wall", { "player.health < 30", "modifier.cooldowns" } },
+  { "Rallying Cry", { 
+    "player.health < 10", 
+    "modifier.cooldowns", 
+  }},
+    
+  { "Last Stand", { 
+    "player.health < 20", 
+    "modifier.cooldowns",
+  }},
+  
+  { "Shield Wall", { 
+    "player.health < 30", 
+    "modifier.cooldowns", 
+  }},
+  
   { "Impending Victory", "player.health <= 85" },
   { "Victory Rush", "player.health <= 85" },
 
   -- Survival Buffs
   { "Shield Block", "!player.buff(Shield Block)" },
-  { "Shield Barrier", { "!player.buff(Shield Barrier)", "player.rage > 80" } },
+  
+  { "Shield Barrier", { 
+    "!player.buff(Shield Barrier)", 
+    "player.rage > 80", 
+  }},
 
   -- Threat Control w/ Toggle
   { "Taunt", "toggle.tc", "target.threat < 100" },
@@ -29,7 +45,11 @@ ProbablyEngine.rotation.register(73, {
 
   -- Ranged
   { "Heroic Throw", "target.range >= 10" },
-  { "Throw", { "target.range >= 10", "!player.moving" } },
+  
+  { "Throw", { 
+    "target.range >= 10", 
+    "!player.moving",
+  }},
 
   -- Cooldowns
   { "Bloodbath", "modifier.cooldowns"  },
@@ -48,16 +68,25 @@ ProbablyEngine.rotation.register(73, {
 
   -- Rotation
   { "Shield Slam" },
-  { "Revenge", { "player.rage <= 80" } },
+  { "Revenge", { "player.rage <= 80", }},
   
   -- Bleed
   { "Devastate", "!target.debuff(Deep Wounds)" },
   
   -- Weakened Armor
-  { "Devastate", { "target.debuff(Weakened Armor).count < 3" } },
-  { "Sunder Armor", { "player.level < 26", "target.debuff(Weakened Armor).count < 3" } },
+  { "Devastate", { "target.debuff(Weakened Armor).count < 3" }},
+  
+  { "Sunder Armor", { 
+    "player.level < 26", 
+    "target.debuff(Weakened Armor).count < 3", 
+  }},
+  
   -- Weakened Blows
-  { "Thunder Clap", { "!target.debuff(Weakened Blows).any", "target.range <= 8" } },
+  { "Thunder Clap", { 
+    "!target.debuff(Weakened Blows).any", 
+    "target.range <= 8", 
+  }},
+  
   -- Filler lol
   { "Devastate" },
 

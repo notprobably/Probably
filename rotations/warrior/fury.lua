@@ -9,7 +9,11 @@ ProbablyEngine.rotation.register(72, {
   { "Berserker Rage" },
 
   -- Survival
-  { "Rallying Cry", { "player.health < 15", "modifier.cooldowns" } },
+  { "Rallying Cry", { 
+    "player.health < 15", 
+    "modifier.cooldowns",
+  }},
+  
   { "Die by the Sword", "player.health < 25" },
   { "Impending Victory", "player.health <= 85" },
   { "Victory Rush", "player.health <= 85" },

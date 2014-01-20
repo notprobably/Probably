@@ -6,15 +6,32 @@ ProbablyEngine.rotation.register(66, {
   --------------------
   
   -- Seals
-  { "Seal of Righteousness", { "modifier.multitarget", "player.seal != 2" }},
+  { "Seal of Righteousness", { 
+    "modifier.multitarget", 
+    "player.seal != 2",
+  }},
 
   -- Dynamic Multitarget Seals
   -- Heal after Censure
-  { "Seal of Insight", { "target.debuff(Censure).count = 5", "target.debuff(Censure).duration > 5", "player.seal != 3", "!modifier.multitarget" } },
+  { "Seal of Insight", { 
+    "target.debuff(Censure).count = 5", 
+    "target.debuff(Censure).duration > 5", 
+    "player.seal != 3", 
+    "!modifier.multitarget",
+  }},
   -- Refresh Censure
-  { "Seal of Truth", { "target.debuff(Censure).duration <= 5", "player.seal != 1", "!modifier.multitarget" } },
+  { "Seal of Truth", { 
+    "target.debuff(Censure).duration <= 5", 
+    "player.seal != 1", 
+    "!modifier.multitarget",
+  }},
+  
   -- Apply Censure
-  { "Seal of Truth", { "target.debuff(Censure).count < 5", "player.seal != 1", "!modifier.multitarget" }},
+  { "Seal of Truth", { 
+    "target.debuff(Censure).count < 5", 
+    "player.seal != 1", 
+    "!modifier.multitarget",
+  }},
 
   -- Taunts
   { "Reckoning", "modifier.taunt" },
