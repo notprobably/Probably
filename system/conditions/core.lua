@@ -537,7 +537,7 @@ local function checkCasting(target)
   local name, startTime, endTime, notInterruptible = checkChanneling(target)
   if name then return name, startTime, endTime, notInterruptible end
 
-  local name, _, _, _, startTime, endTime, _, _, notInterruptible = UnitCastingInfo(target) 
+  local name, _, _, _, startTime, endTime, _, _, notInterruptible = UnitCastingInfo(target)
   if name then return name, startTime, endTime, notInterruptible end
 
   return false
@@ -773,11 +773,15 @@ ProbablyEngine.condition.register("modifier.timeout", function(_, spell, time)
 end)
 
 ProbablyEngine.condition.register("hashero", function(unit, spell)
-	local Hero1 = UnitBuffID(unit, 2825) 
+	local Hero1 = UnitBuffID(unit, 2825)
 	local Hero2 = UnitBuffID(unit, 32182)
 	local Hero3 = UnitBuffID(unit, 80353)
 	local Hero4 = UnitBuffID(unit, 90355)
 	if Hero1 or Hero2 or Hero3 or Hero4 then
 		return true
 	end
+end)
+
+ProbablyEngine.condition.register("charmed", function(unit, _)
+  return (UnitIsCharmed(unit) == true)
 end)
