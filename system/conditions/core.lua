@@ -773,13 +773,13 @@ ProbablyEngine.condition.register("modifier.timeout", function(_, spell, time)
 end)
 
 local heroismBuffs = { 32182, 90355, 80353, 2825 }
+
 ProbablyEngine.condition.register("hashero", function(unit, spell)
   for i = 1, #heroismBuffs do
-    if UnitBuff('player', GetSpellName(heroismBuffs[i]) then
+    if UnitBuff('player', GetSpellName(heroismBuffs[i])) then
       return true
     end
   end
-
   return false
 end)
 
