@@ -62,3 +62,6 @@ function debug.dump(obj)
   end
   return DevTools_Dump(obj)
 end
+
+debug.toggle()
+debug.add('event')

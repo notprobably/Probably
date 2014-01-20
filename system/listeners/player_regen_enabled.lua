@@ -3,6 +3,6 @@
 
 ProbablyEngine.listener.register("PLAYER_REGEN_ENABLED", function(...)
   ProbablyEngine.module.player.combat = false
-  ProbablyEngine.module.combatTracker.cleanCT()
-  ProbablyEngine.interface.cleanCT()
+  -- ProbablyEngine.module.combatTracker.cleanCT()
+  -- ProbablyEngine.interface.cleanCT()
 end)

@@ -1,10 +1,7 @@
 -- Class ID 10 - Four Line Killing Machine
-ProbablyEngine.rotation.register(10, {
+local monk = {}
 
-  --------------------
-  -- Start Rotation --
-  --------------------
-  
+monk.combat = {
   -- Roll
   { "Roll", "modifier.shift" },
 
@@ -12,21 +9,11 @@ ProbablyEngine.rotation.register(10, {
   { "Tiger Palm", "player.buff(Tiger Power).duration < 3" },
   { "Blackout Kick" },
   { "Jab" },
-  
-  ------------------
-  -- End Rotation --
-  ------------------
-  
-  },{
-  
-  ---------------
-  -- OOC Begin --
-  ---------------
-  
+}
+
+monk.OOC = {
   -- Roll
   { "Roll", "modifier.shift" },
+}
 
-  -------------
-  -- OOC End --
-  -------------
-})
+ProbablyEngine.rotation.register(10, monk)

@@ -1,48 +1,37 @@
 -- ProbablyEngine Rotations - https://probablyengine.com/
 -- Released under modified BSD, see attached LICENSE.
 
-ProbablyEngine.tooltip = {
-  frame = CreateFrame('GameTooltip', 'PE_ScanningTooltip', UIParent, 'GameTooltipTemplate')
-}
+local tooltip = CreateFrame('GameTooltip', 'PETooltipReader', UIParent, 'GameTooltipTemplate')
+tooltip:SetOwner(UIParent, 'ANCHOR_NONE')
 
-ProbablyEngine.tooltip.scan = function(target, pattern, scanType)
+local function scan(target, pattern, scanType)
+  local i = 1
+  while i <= 40 do
+    if scanType == 'debuff' then
+      tooltip:SetUnitDebuff(target, i)
+    else
+      tooltip:SetUnitBuff(target, i)
+    end
 
-  if scanType == nil or scanType == 'buff' then
-    -- buffs
-    for i = 1, 40 do
-      ProbablyEngine.tooltip.frame:SetOwner(UIParent, 'ANCHOR_NONE')
-      ProbablyEngine.tooltip.frame:SetUnitBuff(target, i)
-      local tooltipText = _G["PE_ScanningTooltipTextLeft2"]:GetText()
-      if tooltipText then
-        if type(pattern) == 'string' then
-          local match = tooltipText:lower():match(pattern)
-          if match then return true end
-        elseif type(pattern) == 'table' then
-          for _, curPattern in pairs(pattern) do
-            local match = tooltipText:lower():match(curPattern)
-            if match then return true end
+    local text = string.lower(_G['PETooltipReader']:GetText())
+    if text then
+      if type(pattern) == 'string' then
+        if string.match(text, pattern) then
+          return true
+        end
+      elseif type(pattern) == 'table' then
+        for j = 1, #pattern do
+          if string.match(text, pattern[j]) then
+            return true
           end
         end
       end
     end
-  elseif scanType == 'debuff' then
-    -- debuffs
-    for i = 1, 40 do
-      ProbablyEngine.tooltip.frame:SetOwner(UIParent, 'ANCHOR_NONE')
-      ProbablyEngine.tooltip.frame:SetUnitDebuff(target, i)
-      local tooltipText = _G["PE_ScanningTooltipTextLeft2"]:GetText()
-      if tooltipText then
-        if type(pattern) == 'string' then
-          local match = tooltipText:lower():match(pattern)
-          if match then return true end
-        elseif type(pattern) == 'table' then
-          for _, curPattern in pairs(pattern) do
-            local match = tooltipText:lower():match(curPattern)
-            if match then return true end
-          end
-        end
-      end
-    end
+
+    i = i + 1
   end
+
   return false
 end
+
+ProbablyEngine.tooltip = {}
