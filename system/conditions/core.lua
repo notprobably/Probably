@@ -772,14 +772,15 @@ ProbablyEngine.condition.register("modifier.timeout", function(_, spell, time)
   return true
 end)
 
+local heroismBuffs = { 32182, 90355, 80353, 2825 }
 ProbablyEngine.condition.register("hashero", function(unit, spell)
-	local Hero1 = UnitBuffID(unit, 2825)
-	local Hero2 = UnitBuffID(unit, 32182)
-	local Hero3 = UnitBuffID(unit, 80353)
-	local Hero4 = UnitBuffID(unit, 90355)
-	if Hero1 or Hero2 or Hero3 or Hero4 then
-		return true
-	end
+  for i = 1, #heroismBuffs do
+    if UnitBuff('player', GetSpellName(heroismBuffs[i]) then
+      return true
+    end
+  end
+
+  return false
 end)
 
 ProbablyEngine.condition.register("charmed", function(unit, _)
