@@ -1,28 +1,6 @@
 -- SPEC ID 262
 ProbablyEngine.rotation.register(262, {
 
-  -------------------
-  -- Start Racials --
-  -------------------
-  
-  -- =^*~ Alliance ~*^= --
-  -- Dwarves
-  { "Stoneform", "player.health <= 65" },
-
-  -- Draenei
-  { "Gift of the Naaru", "player.health <= 70", "player" },
- 
-  -- <,&~ Horde ~&,> --
-  -- Goblins
-  { "Rocket Barrage", "player.moving" },
-  
-  -- _,-=%Pandaren%=-,_ --
-  { "Quaking Palm", "modifier.interrupts" },
-  
-  -----------------
-  -- End Racials --
-  -----------------
-  
   --------------------
   -- Start Rotation --
   --------------------

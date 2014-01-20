@@ -1,18 +1,6 @@
 -- SPEC ID 105 (Restoration)
 ProbablyEngine.rotation.register(105, {
 
-  -------------------
-  -- Start Racials --
-  -------------------
-  
-  -- Night Elves
-  { "Shadowmeld", "target.threat >= 80" },
-  { "Shadowmeld", "mouseover.threat >= 80"}, 
-
-  -----------------
-  -- End Racials --
-  -----------------
-  
   --------------------
   -- Start Rotation --
   --------------------

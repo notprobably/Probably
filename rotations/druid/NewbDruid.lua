@@ -1,19 +1,6 @@
 -- Class ID 11 - Drood
 ProbablyEngine.rotation.register(11, {
-  
-  -------------------
-  -- Start Racials --
-  -------------------
-  
-  -- =^*~ Alliance ~*^= --
-  -- Night Elves
-  { "Shadowmeld", "target.threat >= 80" },
-  { "Shadowmeld", "focus.threat >= 80"},
-  
-  -----------------
-  -- End Racials --
-  -----------------
-  
+
   --------------------
   -- Start Rotation --
   --------------------

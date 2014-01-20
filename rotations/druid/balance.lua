@@ -1,20 +1,6 @@
 -- SPEC ID 102 (Balance)
 ProbablyEngine.rotation.register(102, {
-  
-  -------------------
-  -- Start Racials --
-  -------------------
-  
-  -- =^*~ Alliance ~*^= --
-  -- Night Elves
-  { "Shadowmeld", "target.threat >= 80" },
-  { "Shadowmeld", "focus.threat >= 80"},
-  
-  -----------------
-  -- End Racials --
-  -----------------
-  
-  
+
   --------------------
   -- Start Rotation --
   --------------------

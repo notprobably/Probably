@@ -94,11 +94,18 @@ ProbablyEngine.rotation.register(250, {
     "target.debuff(Frost Fever)" } },
 	
   { "Death Strike", "modifier.multitarget" },
-  { "Blood Boil", "modifier.multitarget", "target.range <= 10"  },
+  
+  { "Blood Boil", 
+    "modifier.multitarget", 
+    "target.range <= 10"  },
+	
   { "Rune Strike", "modifier.multitarget" },
 
   -- Rotation
-  { "Soul Reaper", {"player.runes(blood).count >= 1", "target.health < 35" }},
+  { "Soul Reaper", {
+    "player.runes(blood).count >= 1", 
+	"target.health < 35" }},
+	
   { "Heart Strike", "player.runes(blood).count >= 1" },
   { "Death Strike", "!modifier.last(Death Strike)" },
   { "Rune Strike", "player.runicpower >= 40" },

@@ -1,24 +1,11 @@
 -- SPEC ID 103
 ProbablyEngine.rotation.register(103, {
 
-  -------------------
-  -- Start Racials --
-  -------------------
-  
-  -- =^*~ Alliance ~*^= --
-  -- Night Elves
-  { "Shadowmeld", "target.threat >= 80" },
-  { "Shadowmeld", "focus.threat >= 80"},
-  
-  -----------------
-  -- End Racials --
-  -----------------
-  
   --------------------
   -- Start Rotation --
   --------------------
   
-  -- Fuck Bear Form
+  -- Anti-Bear Form
   { "/cancelaura Bear Form", "player.buff(Bear Form)" },
   
   -- Survival
