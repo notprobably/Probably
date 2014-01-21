@@ -105,11 +105,11 @@ ProbablyEngine.rotation.register(269, {
   
   -- Buffs
   { "Legacy of the White Tiger", "!player.buff(Legacy of the White Tiger).any" },
-  { "Legacy of the Emperor", "!player.buff(Legacy of the Emperor).any" },
+  { "116095", "!player.buff(116095).any" },-- Legacy of Emp
 
   -------------
   -- OOC End --
   -------------
 }, function()
-ProbablyEngine.toggle.create('disable', 'Interface\\Icons\\spell_nature_rejuvenation', 'Disable', 'Toggle Disable')
+ProbablyEngine.toggle.create('disable', 'Interface\\Icons\\ability_shockwave', 'Disable', 'Toggle Disable')
 end)
