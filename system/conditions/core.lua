@@ -829,15 +829,14 @@ ProbablyEngine.condition.register("charmed", function(unit, _)
   return (UnitIsCharmed(unit) == true)
 end)
 
-local vengeance = { 120267, 93098, 84839, 84840, 93099 }
 ProbablyEngine.condition.register("vengeance", function(unit, spell)
-  for i = 1, #vengeance do
-    if spell then
-      return select(15, UnitBuff("player", GetSpellName(vengeance[i])))
-    end
-
-    return UnitHealthMax("player") / select(15, UnitBuff("player", GetSpellName(vengeance[i])))
+  if not UnitBuff("player", GetSpellName(132365)) then
+    return 0
   end
 
-  return 0
+  if spell then
+    return select(15, UnitBuff("player", GetSpellName(132365)))
+  end
+
+  return UnitHealthMax("player") / select(15, UnitBuff("player", GetSpellName(132365)))
 end)
