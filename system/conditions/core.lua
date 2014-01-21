@@ -783,6 +783,38 @@ ProbablyEngine.condition.register("hashero", function(unit, spell)
   return false
 end)
 
+ProbablyEngine.condition.register("buffs.stats", function(unit, _)
+  return (GetRaidBuffTrayAuraInfo(1) ~= nil)
+end)
+
+ProbablyEngine.condition.register("buffs.stamina", function(unit, _)
+  return (GetRaidBuffTrayAuraInfo(2) ~= nil)
+end)
+
+ProbablyEngine.condition.register("buffs.attackpower", function(unit, _)
+  return (GetRaidBuffTrayAuraInfo(3) ~= nil)
+end)
+
+ProbablyEngine.condition.register("buffs.attackspeed", function(unit, _)
+  return (GetRaidBuffTrayAuraInfo(4) ~= nil)
+end)
+
+ProbablyEngine.condition.register("buffs.spellpower", function(unit, _)
+  return (GetRaidBuffTrayAuraInfo(5) ~= nil)
+end)
+
+ProbablyEngine.condition.register("buffs.spellhaste", function(unit, _)
+  return (GetRaidBuffTrayAuraInfo(6) ~= nil)
+end)
+
+ProbablyEngine.condition.register("buffs.crit", function(unit, _)
+  return (GetRaidBuffTrayAuraInfo(7) ~= nil)
+end)
+
+ProbablyEngine.condition.register("buffs.mastery", function(unit, _)
+  return (GetRaidBuffTrayAuraInfo(8) ~= nil)
+end)
+
 ProbablyEngine.condition.register("charmed", function(unit, _)
   return (UnitIsCharmed(unit) == true)
 end)
