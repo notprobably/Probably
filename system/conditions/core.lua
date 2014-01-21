@@ -559,6 +559,16 @@ ProbablyEngine.condition.register('casting.delta', function(target, spell)
   return false
 end)
 
+ProbablyEngine.condition.register('casting.percent', function(target, spell)
+  local name, startTime, endTime, notInterruptible = checkCasting(target)
+  if name and not notInterruptible then
+    local castLength = (endTime - startTime) / 1000
+    local secondsLeft = endTime / 1000  - GetTime()
+    return ((secondsLeft/castLength)*100)
+  end
+  return false
+end)
+
 ProbablyEngine.condition.register('channeling', function (target, spell)
   return checkChanneling(target)
 end)
