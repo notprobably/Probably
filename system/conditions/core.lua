@@ -830,13 +830,14 @@ ProbablyEngine.condition.register("charmed", function(unit, _)
 end)
 
 ProbablyEngine.condition.register("vengeance", function(unit, spell)
-  if not UnitBuff("player", GetSpellName(132365)) then
+  local vengeance = select(15, _G['UnitBuff']("player", GetSpellName(132365)))
+  if not vengeance then
     return 0
   end
 
   if spell then
-    return select(15, UnitBuff("player", GetSpellName(132365)))
+    return vengeance
   end
 
-  return UnitHealthMax("player") / select(15, UnitBuff("player", GetSpellName(132365)))
+  return UnitHealthMax("player") / vengeance
 end)
