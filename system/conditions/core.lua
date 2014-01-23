@@ -839,5 +839,5 @@ ProbablyEngine.condition.register("vengeance", function(unit, spell)
     return vengeance
   end
 
-  return vengeance / UnitHealthMax("player")
+  return vengeance / UnitHealthMax("player") * 100
 end)
