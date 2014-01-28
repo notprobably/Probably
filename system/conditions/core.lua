@@ -782,7 +782,7 @@ ProbablyEngine.condition.register("modifier.timeout", function(_, spell, time)
   return true
 end)
 
-local heroismBuffs = { 32182, 90355, 80353, 2825 }
+local heroismBuffs = { 32182, 90355, 80353, 2825, 146555 }
 
 ProbablyEngine.condition.register("hashero", function(unit, spell)
   for i = 1, #heroismBuffs do
