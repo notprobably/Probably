@@ -300,7 +300,12 @@ ProbablyEngine.condition.register('boss', function (target, spell)
 end)
 
 ProbablyEngine.condition.register("id", function(target, id)
-  return UnitId(target) == id
+  local expectedID = tonumber(id)
+  if expectedID and UnitID(target) == expectedID then
+    return true
+  end
+
+  return false
 end)
 
 ProbablyEngine.condition.register("toggle", function(toggle, spell)
