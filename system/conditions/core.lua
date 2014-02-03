@@ -335,6 +335,13 @@ ProbablyEngine.condition.register("threat", function(target, spell)
   return 0
 end)
 
+ProbablyEngine.condition.register("agro", function(target, spell)
+  if UnitThreatSituation(target) and UnitThreatSituation(target) >= 2 then
+    return true
+  end
+  return false
+end)
+
 
 ProbablyEngine.condition.register("balance.sun", function(target, spell)
   local direction = GetEclipseDirection()
@@ -752,6 +759,14 @@ end)
 
 ProbablyEngine.condition.register("modifier.raid", function()
   return IsInRaid()
+end)
+
+ProbablyEngine.condition.register("party", function(target)
+  return UnitInParty(target)
+end)
+
+ProbablyEngine.condition.register("raid", function(target)
+  return UnitInRaid(target)
 end)
 
 ProbablyEngine.condition.register("modifier.members", function()
