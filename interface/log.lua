@@ -1,6 +1,7 @@
 -- ProbablyEngine Rotations - https://probablyengine.com/
 -- Released under modified BSD, see attached LICENSE.
 
+local stringLen = string.len
 
 local log_height = 16
 local log_items = 10
@@ -219,7 +220,7 @@ ProbablyEngine.actionLog.update = function ()
     if not item then
       ProbablyEngine.actionLog.updateRow(i, '', '', '')
     else
-      local target = item.target and ' @ (' .. item.target .. ')' or ''
+      local target = stringLen(item.target) > 0 and ' @ (' .. item.target .. ')' or ''
       ProbablyEngine.actionLog.updateRow(i, item.event, 'x' .. item.count .. ' ' .. '|T' .. item.icon .. ':-1:-1:0:0|t' .. item.description .. target, item.time)
     end
   end
