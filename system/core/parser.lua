@@ -305,12 +305,12 @@ ProbablyEngine.parser.table = function(spellTable, fallBackTarget)
       elseif eventType == "item" then
         if stopCasting then SpellStopCasting() end
         UseInventoryItem(slotId)
-        ProbablyEngine.actionLog.insert('Use Inventory Item', itemName, itemTexture)
+        ProbablyEngine.actionLog.insert('Use Inventory Item', itemName, itemTexture, target)
         return false
       elseif eventType == "bagItem" then
         if stopCasting then SpellStopCasting() end
         UseItemByName(itemName, target)
-        ProbablyEngine.actionLog.insert('Use Bag Item', itemName, itemTexture)
+        ProbablyEngine.actionLog.insert('Use Bag Item', itemName, itemTexture, target)
         return false
       elseif event == "pause" then
         return false

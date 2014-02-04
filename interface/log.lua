@@ -219,7 +219,8 @@ ProbablyEngine.actionLog.update = function ()
     if not item then
       ProbablyEngine.actionLog.updateRow(i, '', '', '')
     else
-      ProbablyEngine.actionLog.updateRow(i, item.event, 'x' .. item.count .. ' ' .. '|T' .. item.icon .. ':-1:-1:0:0|t' .. item.description .. ' @ (' .. item.target .. ')', item.time)
+      local target = item.target and ' @ (' .. item.target .. ')' or ''
+      ProbablyEngine.actionLog.updateRow(i, item.event, 'x' .. item.count .. ' ' .. '|T' .. item.icon .. ':-1:-1:0:0|t' .. item.description .. target, item.time)
     end
   end
 end
