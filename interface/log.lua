@@ -184,13 +184,14 @@ ProbablyEngine.actionLog = {
   log = {}
 }
 
-ProbablyEngine.actionLog.insert = function(type, spell, spellIcon)
+ProbablyEngine.actionLog.insert = function(type, spell, spellIcon, target)
   if spellIcon then
-    if ProbablyEngine.actionLog.log[1] and ProbablyEngine.actionLog.log[1]['event'] == type and ProbablyEngine.actionLog.log[1]['description'] == spell then
+    if ProbablyEngine.actionLog.log[1] and ProbablyEngine.actionLog.log[1]['event'] == type and ProbablyEngine.actionLog.log[1]['description'] == spell and ProbablyEngine.actionLog.log[1]['target'] == target then
       ProbablyEngine.actionLog.log[1]['count'] = ProbablyEngine.actionLog.log[1]['count'] + 1
     else
       table.insert(ProbablyEngine.actionLog.log, 1, {
         event = type,
+        target = target or '',
         icon = spellIcon,
         description = spell,
         count = 1,
@@ -218,7 +219,7 @@ ProbablyEngine.actionLog.update = function ()
     if not item then
       ProbablyEngine.actionLog.updateRow(i, '', '', '')
     else
-      ProbablyEngine.actionLog.updateRow(i, item.event, 'x' .. item.count .. ' ' .. '|T' .. item.icon .. ':-1:-1:0:0|t' .. item.description, item.time)
+      ProbablyEngine.actionLog.updateRow(i, item.event, 'x' .. item.count .. ' ' .. '|T' .. item.icon .. ':-1:-1:0:0|t' .. item.description .. ' @ (' .. item.target .. ')', item.time)
     end
   end
 end

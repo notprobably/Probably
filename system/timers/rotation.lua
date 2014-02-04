@@ -61,7 +61,7 @@ ProbablyEngine.cycle = function(skip_verify)
         CameraOrSelectOrMoveStop(1) -- this isn't unlocked
         SetCVar("deselectOnClick", "1")
         if icon then
-          ProbablyEngine.actionLog.insert('Ground Cast', name, icon)
+          ProbablyEngine.actionLog.insert('Ground Cast', name, icon, "ground")
         end
       else
         if spellID == 110309 then
@@ -73,7 +73,7 @@ ProbablyEngine.cycle = function(skip_verify)
           RunMacroText("/targetlasttarget")
         end
         if icon then
-          ProbablyEngine.actionLog.insert('Spell Cast', name, icon)
+          ProbablyEngine.actionLog.insert('Spell Cast', name, icon, target or "target")
         end
       end
 
@@ -127,7 +127,7 @@ ProbablyEngine.timer.register("oocrotation", function()
         CameraOrSelectOrMoveStop(1) -- this isn't unlocked
         SetCVar("deselectOnClick", "1")
         if icon then
-          ProbablyEngine.actionLog.insert('Ground Cast', name, icon)
+          ProbablyEngine.actionLog.insert('Ground Cast', name, icon, "ground")
         end
       else
         if spellID == 110309 then
@@ -139,7 +139,7 @@ ProbablyEngine.timer.register("oocrotation", function()
           RunMacroText("/targetlasttarget")
         end
         if icon then
-          ProbablyEngine.actionLog.insert('Spell Cast', name, icon)
+          ProbablyEngine.actionLog.insert('Spell Cast', name, icon, target)
         end
       end
     end
