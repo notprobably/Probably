@@ -20,7 +20,7 @@ ProbablyEngine.rotation.register(253, {
   { "Freezing Trap" , "modifier.shift", "ground" },
 
   -- Interrupts
-  { "Silencing Shot", "modifier.interrupts" },
+  { "Silencing Shot", { "modifier.interrupts", "player.spell(Silencing Shot).cooldown = 0" }},
 
   -- Survival
   { "Deterrence", "player.health < 40" },
