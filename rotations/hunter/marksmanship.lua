@@ -1,4 +1,4 @@
--- SPEC ID 254
+﻿-- SPEC ID 254
 ProbablyEngine.rotation.register(254, {
 
   --------------------
@@ -15,7 +15,7 @@ ProbablyEngine.rotation.register(254, {
   { "Freezing Trap" , "modifier.shift", "ground" },
   
   -- Interrupts
-  { "Silencing Shot", { "modifier.interrupts", "player.spell(Silencing Shot).cooldown = 0" }},
+  { "Silencing Shot", { "modifier.interrupt" }},
 
   -- Survival
   { "Deterrence", "player.health < 40" },
@@ -46,9 +46,10 @@ ProbablyEngine.rotation.register(254, {
   }},
 
   -- Debuffs
+  { "Hunter's Mark", "!target.debuff(Hunter's Mark)" },
   { "Serpent Sting", "!target.debuff(Serpent Sting)" },
 
-  -- Careful Aim Rotation ( 90% + HP )
+  -- Careful Aim Rotation ( 80% + HP )
   {{
     { "Chimera Shot", "target.debuff(Serpent Sting).duration < 5" },
     { "Aimed Shot", "!player.moving" },
@@ -57,9 +58,8 @@ ProbablyEngine.rotation.register(254, {
     { "Steady Shot" }
   }, "target.health > 80" },
 
-  -- Standard Rotation ( 90% - HP )
+  -- Standard Rotation ( 80% - HP )
   {{
-    { "Serpent Sting", "!target.debuff(Serpent Sting)" },
     { "Chimera Shot" },
     { "Kill Shot" },
     { "Glaive Toss" },

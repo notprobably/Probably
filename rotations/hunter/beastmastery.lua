@@ -1,4 +1,4 @@
--- SPEC ID 253
+﻿-- SPEC ID 253
 ProbablyEngine.library.register('coreHunter', {
     petInRange = function()
         return (IsSpellInRange('Growl', 'target') == 1)
@@ -20,7 +20,7 @@ ProbablyEngine.rotation.register(253, {
   { "Freezing Trap" , "modifier.shift", "ground" },
 
   -- Interrupts
-  { "Silencing Shot", { "modifier.interrupts", "player.spell(Silencing Shot).cooldown = 0" }},
+  { "Silencing Shot", { "modifier.interrupt" }},
 
   -- Survival
   { "Deterrence", "player.health < 40" },
@@ -49,6 +49,7 @@ ProbablyEngine.rotation.register(253, {
   { "Rapid Fire", "modifier.cooldowns" },
 
   -- Rotation
+  { "Hunter's Mark", "!target.debuff(Hunter's Mark)" },
   { "Serpent Sting", "!target.debuff(Serpent Sting)" },
   { "Steady Shot", "target.debuff(Serpent Sting).duration < 4" },
   { "Focus Fire", { 

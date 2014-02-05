@@ -1,4 +1,4 @@
-       -- SPEC ID 255
+﻿-- SPEC ID 255
 ProbablyEngine.rotation.register(255, {
 
   --------------------
@@ -15,7 +15,7 @@ ProbablyEngine.rotation.register(255, {
   { "Freezing Trap" , "modifier.shift", "ground" },
 
   -- Interrupts
-  { "Silencing Shot", { "modifier.interrupts", "player.spell(Silencing Shot).cooldown = 0" }},
+  { "Silencing Shot", { "modifier.interrupt" }},
 
   -- Survival
   { "Deterrence", "player.health < 40" },
@@ -50,8 +50,9 @@ ProbablyEngine.rotation.register(255, {
   }},
 
   -- Rotation
-  { "Explosive Shot", "player.buff(Lock and Load)" },
+  { "Hunter's Mark", "!target.debuff(Hunter's Mark)" },
   { "Serpent Sting", "!target.debuff(Serpent Sting)" },
+  { "Explosive Shot", "player.buff(Lock and Load)" },
   { "Steady Shot", "target.debuff(Serpent Sting).duration < 4" },
   { "Black Arrow"},
   { "Explosive Shot" },
